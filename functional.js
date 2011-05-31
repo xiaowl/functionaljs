@@ -9,6 +9,11 @@ var functional = (function(){
     /*===============Common public high order functions===========*/
 
     function map(list, func, arg){
+        //ECMA-262 standard
+        if(list instanceof Array && Array.prototype.map !== void 0){
+            return Array.prototype.map.call(list, func, arg);
+        }
+
         var ret = [];
         if(!isArray(list)){
             throw "Map function can only be applied to array or string";
@@ -21,6 +26,11 @@ var functional = (function(){
     }
 
     function filter(list, func, arg){
+        //ECMA-262 standard
+        if(list instanceof Array && Array.prototype.filter !== void 0){
+            return Array.prototype.filter.call(list, func, arg);
+        }
+
         var ret = [];
         if(!isArray(list)){
             throw "Filter function can only be applied to array or string";
@@ -86,7 +96,7 @@ var functional = (function(){
 
     var functional = {};
     install(functional, function(scope){
-        map("map|filter|data".split("|"), function(name){
+        map("map|filter|data|isArray".split("|"), function(name){
             scope[name] = eval(name);
         });
     });
