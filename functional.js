@@ -53,11 +53,11 @@ var functional = (function(){
             },
 
             map: function(func, arg){
-                return new List(map(this.list, func, arg));
+                return List(map(this.list, func, arg));
             },
 
             filter: function(func, arg){
-                return new List(filter(this.list, func, arg));
+                return List(filter(this.list, func, arg));
             }
         }
 
