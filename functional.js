@@ -48,14 +48,25 @@ var functional = (function(){
     /*================data.List======================================*/
 
     var data = (function(){
-        function List(list){
+        function List(){
+            //we can turn all arguments to a list, like scala.List does.
+            var list = [];
+            if(arguments.length == 1){
+                list = arguments[0];
+            }
+            else if(arguments.length > 1){
+                list = [];
+                for(var i=0, ii=arguments.length; i<ii; i++){
+                    list.push(arguments[i]);
+                }
+            }
             return new List.fn.init(list);
         }
 
         List.fn = List.prototype = {
             init: function(list){
                 this.list = list;
-                this.length = list.length;
+                this.length = this.list.length;
             },
 
             value: function(){
