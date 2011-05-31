@@ -107,7 +107,7 @@ var functional = (function(){
 
     var functional = {};
     install(functional, function(scope){
-        map("map|filter|data|isArray".split("|"), function(name){
+        map("map|filter|data".split("|"), function(name){
             scope[name] = eval(name);
         });
     });
